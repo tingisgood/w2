@@ -1,0 +1,14 @@
+void setup() {
+  Serial.begin(115200);
+  pinMode(12, INPUT);
+
+  ledcSetup(0, 5000, 8);
+  ledcAttachPin(13, 0);
+}
+
+void loop() {
+  int input = analogRead(12);
+  int inputmap = map(input,900, 0, -150, 255);
+  ledcWrite(0,inputmap);
+  Serial.println(inputmap);
+  }
